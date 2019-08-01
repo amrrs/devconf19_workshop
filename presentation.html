@@ -1,0 +1,2149 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Intro to R for Data Science</title>
+    <meta charset="utf-8">
+    <meta name="author" content="AbdulMajedRaja RS" />
+    <link href="libs/remark-css/default.css" rel="stylesheet" />
+    <link href="libs/remark-css/default-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# Intro to R for Data Science
+## Beginner’s workshop
+### AbdulMajedRaja RS
+
+---
+
+
+
+
+
+# About Me
+
+- Studied at **Government College of Technology, Coimbatore**
+
+- Bengaluru R user group **Organizer**
+
+- R Packages Developer ( `coinmarketcapr`, `itunesr`)
+
+
+---
+
+class: inverse
+
+# Disclaimer:
+
+- This workshop is **NOT** going to make you a Data Scientist **in a day**. 
+
+- The objective is to help you get a flavor of R and how it is used in Data Science
+
+- Thus, get you ready to embark on your own journey to become a Data Scientist who uses R
+
+
+---
+
+# Content:
+
+This presentation's content is heavily borrowed from the book [**R for Data Science**](https://r4ds.had.co.nz) by **Garrett Grolemund** and **Hadley Wickham**
+
+
+.center[&lt;img src="images/r4ds_had_cover.png" width="30%"&gt;]
+
+---
+
+
+# About R
+
+- R is a language and environment for statistical computing and graphics. (Ref: [`r-project.org`](https://www.r-project.org/about.html))
+
+- R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand
+
+- R is Free
+
+- R can be extended (easily) via *packages*.
+
+- R is an interpreted language
+
+
+.right[![image](images/Rlogo.png)]
+
+
+---
+class: inverse, center, middle
+
+# R Interpreter / Console / GUI
+## Demo
+---
+
+# About RStudio
+
+
+- RStudio is a **free and open-source IDE** for R, released by the company **RStudio, Inc.** 
+
+- RStudio and its team regularly contribute to R community by releasing new packages, such as:
+  - `tidyverse`
+  - `shiny`
+  - `knitr`
+
+
+.right[&lt;img src="images/RStudio.png" width="40%"&gt;]
+
+
+---
+class: inverse, center, middle
+
+# RStudio
+## Demo
+
+
+---
+
+# R Ecosystem
+
+Like `Python`, `R`'s strength lies in its Ecosystem. **Why R?** - R Packages
+
+
+### Growth
+
+
+&lt;figure&gt;
+    &lt;img src='images/number-of-submitted-packages-to-CRAN.png' width="80% /&gt;
+      &lt;font size="2"&gt;
+        &lt;figcaption&gt; Source: &lt;a href ="https://gist.github.com/daroczig/3cf06d6db4be2bbe3368"&gt;@daroczig&lt;/a&gt;
+        &lt;/figcaption&gt;
+      &lt;/font&gt;
+&lt;/figure&gt;
+
+---
+class: inverse, center, middle
+
+# Basics of R Programming
+
+---
+
+# Hello, World!
+
+
+The traditional first step - **Hello, World!**:
+
+--
+
+
+```r
+*print("Hello, World!")
+```
+
+```
+## [1] "Hello, World!"
+```
+
+&lt;br/&gt;
+
+###.center[That's one small step for a man, one giant leap for mankind]
+###.center[Neil Armstrong]
+
+---
+
+# Arithmetic Operations
+
+
+```r
+2 + 3
+```
+
+```
+## [1] 5
+```
+
+
+```r
+50000 * 42222
+```
+
+```
+## [1] 2111100000
+```
+
+
+```r
+2304 / 233
+```
+
+```
+## [1] 9.888412
+```
+
+
+```r
+(33 + 44 ) * 232 / 12
+```
+
+```
+## [1] 1488.667
+```
+
+---
+
+# Assignment Operators
+
+### .center[`&lt;-` **Arrow (Less-than &lt; and Minus - )**]
+
+### .center[`=` **(Equal Sign)**]
+
+
+```r
+(x &lt;- 2 + 3)
+```
+
+```
+## [1] 5
+```
+
+
+
+```r
+*(y = x ** 4)
+```
+
+```
+## [1] 625
+```
+
+
+```r
+5 * 9 -&gt; a
+a + 3
+```
+
+```
+## [1] 48
+```
+
+---
+
+
+
+# Objects
+
+* The entities R operates on are technically known as `objects`.
+
+Example: Vector of numeric
+
+
+
+```r
+vector_of_numeric &lt;- c(2,4,5)
+
+typeof(vector_of_numeric)
+```
+
+```
+## [1] "double"
+```
+
+---
+
+# Vectors
+
+- Atomic Vectors - Homogeneous Data Type
+
+  - logical
+  - integer
+  - double
+  - character
+  - *complex*
+  - *raw*
+
+- Lists - (Recursive Vectors) Heterogeneous Data Type 
+
+- `NULL` is used to represent absence of a vector
+
+**Vectors + Attributes (Additional Meta Data) = Augmented vectors**
+
+* Factors are built on top of integer vectors.
+* Dates and date-times are built on top of numeric vectors.
+* Data frames and tibbles are built on top of lists.
+
+
+---
+
+### Numeric Vector
+
+
+```r
+nummy &lt;- c(2,3,4)
+
+nummy_int &lt;- c(1L,2L,3L)  
+```
+
+
+
+```r
+typeof(nummy)
+```
+
+```
+## [1] "double"
+```
+
+```r
+typeof(nummy_int)
+```
+
+```
+## [1] "integer"
+```
+
+
+```r
+is.numeric(nummy)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+is.numeric(nummy_int)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+is.double(nummy)
+```
+
+```
+## [1] TRUE
+```
+
+```r
+is.double(nummy_int)
+```
+
+```
+## [1] FALSE
+```
+
+
+---
+
+### Character Vector
+
+
+```r
+types &lt;- c("int","double","character")
+
+types
+```
+
+```
+## [1] "int"       "double"    "character"
+```
+
+
+
+```r
+typeof(types)
+```
+
+```
+## [1] "character"
+```
+
+```r
+length(types)
+```
+
+```
+## [1] 3
+```
+
+
+```r
+is.numeric(types)
+```
+
+```
+## [1] FALSE
+```
+
+```r
+is.character(types)
+```
+
+```
+## [1] TRUE
+```
+---
+
+### Logical Vector
+
+
+```r
+logicals &lt;- c(TRUE,F,TRUE,T, FALSE)
+
+logicals
+```
+
+```
+## [1]  TRUE FALSE  TRUE  TRUE FALSE
+```
+---
+
+# Coersion 
+
+## Typecasting - Explicit
+
+
+
+```r
+money_in_chars &lt;- c("20","35","33")
+
+typeof(money_in_chars)
+```
+
+```
+## [1] "character"
+```
+
+
+```r
+money_money &lt;- as.numeric(money_in_chars)
+
+money_money
+```
+
+```
+## [1] 20 35 33
+```
+
+```r
+typeof(money_money)
+```
+
+```
+## [1] "double"
+```
+
+---
+
+## Typecasting - Implicit
+
+
+```r
+money_money &lt;- as.numeric(money_in_chars)
+
+money_money
+```
+
+```
+## [1] 20 35 33
+```
+
+```r
+typeof(money_money)
+```
+
+```
+## [1] "double"
+```
+
+
+```r
+new_money &lt;- c(money_money,"33")
+
+new_money
+```
+
+```
+## [1] "20" "35" "33" "33"
+```
+
+```r
+typeof(new_money)
+```
+
+```
+## [1] "character"
+```
+
+
+---
+
+#Vector - Accessing
+
+
+```r
+month.abb #in-built character vector with Month Abbreviations
+```
+
+```
+##  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov"
+## [12] "Dec"
+```
+
+```r
+month.abb[2]
+```
+
+```
+## [1] "Feb"
+```
+
+
+```r
+month.abb[4:7]
+```
+
+```
+## [1] "Apr" "May" "Jun" "Jul"
+```
+
+
+```r
+month.abb[c(2,5,7,10)]
+```
+
+```
+## [1] "Feb" "May" "Jul" "Oct"
+```
+
+---
+# Vector Manipulation
+
+## Appending
+
+
+```r
+days &lt;- c("Mon","Tue","Wed")
+
+days
+```
+
+```
+## [1] "Mon" "Tue" "Wed"
+```
+
+
+```r
+week_end &lt;- c("Sat","Sun")
+
+more_days &lt;- c(days,"Thu","Fri",week_end)
+
+more_days
+```
+
+```
+## [1] "Mon" "Tue" "Wed" "Thu" "Fri" "Sat" "Sun"
+```
+
+---
+
+# Vector - Arithmetic
+
+
+```r
+set.seed(122)
+
+so_many_numbers &lt;- runif(10, min = 10, max = 100)
+
+so_many_numbers
+```
+
+```
+##  [1] 91.45185 91.61657 27.14995 13.68211 62.11661 66.31451 71.14383
+##  [8] 10.25104 13.21914 63.69918
+```
+
+
+```r
+so_many_numbers * 200
+```
+
+```
+##  [1] 18290.370 18323.314  5429.989  2736.422 12423.322 13262.902 14228.767
+##  [8]  2050.209  2643.828 12739.836
+```
+
+---
+# Factors
+
+* In R, factors are used to work with categorical variables, variables that have a fixed and known set of possible values.
+
+* Useful with Characters where non-Alphabetical Ordering is required
+
+
+```r
+days &lt;- c("Thu","Wed","Sun")
+
+sort(days)
+```
+
+```
+## [1] "Sun" "Thu" "Wed"
+```
+
+
+
+```r
+week_levels &lt;- c("Mon","Tue","Wed","Thu","Fri","Sat","Sun")
+
+
+(days_f &lt;- factor(days, levels = week_levels))
+```
+
+```
+## [1] Thu Wed Sun
+## Levels: Mon Tue Wed Thu Fri Sat Sun
+```
+
+
+```r
+sort(days_f)  
+```
+
+```
+## [1] Wed Thu Sun
+## Levels: Mon Tue Wed Thu Fri Sat Sun
+```
+
+---
+
+# List
+
+Lists are a step up in complexity from atomic vectors: each element can be any type, not just vectors. 
+
+
+```r
+(a_list &lt;- list("abcd",123,1:12,month.abb))
+```
+
+```
+## [[1]]
+## [1] "abcd"
+## 
+## [[2]]
+## [1] 123
+## 
+## [[3]]
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+## 
+## [[4]]
+##  [1] "Jan" "Feb" "Mar" "Apr" "May" "Jun" "Jul" "Aug" "Sep" "Oct" "Nov"
+## [12] "Dec"
+```
+---
+
+# List Accessing
+
+
+```r
+a_list[[1]]
+```
+
+```
+## [1] "abcd"
+```
+
+```r
+a_list[[4]][4]
+```
+
+```
+## [1] "Apr"
+```
+
+
+---
+
+# Matrix
+
+
+```r
+new_m &lt;- matrix(data = 1:12, nrow = 3)
+
+new_m
+```
+
+```
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+```
+
+
+```r
+new_m * 20
+```
+
+```
+##      [,1] [,2] [,3] [,4]
+## [1,]   20   80  140  200
+## [2,]   40  100  160  220
+## [3,]   60  120  180  240
+```
+
+
+
+```r
+dim(new_m)
+```
+
+```
+## [1] 3 4
+```
+
+```r
+new_m[2,3]
+```
+
+```
+## [1] 8
+```
+---
+# Dataframe
+
+## Tabular Structure 
+
+* dimension 
+* row.names
+* col.names
+
+
+
+```r
+colleges &lt;- c("CIT","GCT","PSG")
+
+year &lt;- c(2019,2018,2017)
+
+db &lt;- data.frame(college_names = colleges, year_since = year)
+
+db
+```
+
+```
+##   college_names year_since
+## 1           CIT       2019
+## 2           GCT       2018
+## 3           PSG       2017
+```
+
+---
+# Dataframe Manipulation
+
+
+```r
+db$college_names
+```
+
+```
+## [1] CIT GCT PSG
+## Levels: CIT GCT PSG
+```
+
+
+```r
+db[2,2] &lt;- 1990
+
+db
+```
+
+```
+##   college_names year_since
+## 1           CIT       2019
+## 2           GCT       1990
+## 3           PSG       2017
+```
+
+
+```r
+db[,"year_since"]
+```
+
+```
+## [1] 2019 1990 2017
+```
+
+---
+
+# Loops &amp; Iterators
+
+## For Loop
+
+
+```r
+for (month_name in month.abb[1:4]) {
+  print(paste("This month", month_name, "beautiful!!!"))
+}
+```
+
+```
+## [1] "This month Jan beautiful!!!"
+## [1] "This month Feb beautiful!!!"
+## [1] "This month Mar beautiful!!!"
+## [1] "This month Apr beautiful!!!"
+```
+
+As you move forward, Check the family of `apply` functions - `sapply()`, `tapply()`, `lapply()`, `apply()`.
+
+For advanced functional programming, refer `purrr` package
+
+---
+
+# Logical Operations 
+
+## %in% operator
+
+
+```r
+iris$Species %in% "virginica"
+```
+
+```
+##   [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [12] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [23] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [34] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [45] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [56] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [67] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [78] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+##  [89] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE
+## [100] FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [111]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [122]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [133]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## [144]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
+
+---
+
+## Logical Operators
+
+
+```r
+1:10 &gt; 5
+```
+
+```
+##  [1] FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
+
+
+```r
+1:10 == 4
+```
+
+```
+##  [1] FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE FALSE
+```
+
+
+```r
+!1:10 == 4
+```
+
+```
+##  [1]  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+```
+
+---
+# Conditions
+
+
+```r
+if (iris$Sepal.Length[2]&gt;5) {
+  print("it is gt 5")
+} else print("it is not")
+```
+
+```
+## [1] "it is not"
+```
+
+
+
+```r
+if (iris$Sepal.Length&gt;10) {print("hello")}
+```
+
+```
+## Warning in if (iris$Sepal.Length &gt; 10) {: the condition has length &gt; 1 and
+## only the first element will be used
+```
+
+
+```r
+ifelse(iris$Sepal.Length&gt;6, "more_than_10","les_than_10")
+```
+
+```
+##   [1] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##   [5] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##   [9] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [13] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [17] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [21] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [25] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [29] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [33] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [37] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [41] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [45] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [49] "les_than_10"  "les_than_10"  "more_than_10" "more_than_10"
+##  [53] "more_than_10" "les_than_10"  "more_than_10" "les_than_10" 
+##  [57] "more_than_10" "les_than_10"  "more_than_10" "les_than_10" 
+##  [61] "les_than_10"  "les_than_10"  "les_than_10"  "more_than_10"
+##  [65] "les_than_10"  "more_than_10" "les_than_10"  "les_than_10" 
+##  [69] "more_than_10" "les_than_10"  "les_than_10"  "more_than_10"
+##  [73] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+##  [77] "more_than_10" "more_than_10" "les_than_10"  "les_than_10" 
+##  [81] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [85] "les_than_10"  "les_than_10"  "more_than_10" "more_than_10"
+##  [89] "les_than_10"  "les_than_10"  "les_than_10"  "more_than_10"
+##  [93] "les_than_10"  "les_than_10"  "les_than_10"  "les_than_10" 
+##  [97] "les_than_10"  "more_than_10" "les_than_10"  "les_than_10" 
+## [101] "more_than_10" "les_than_10"  "more_than_10" "more_than_10"
+## [105] "more_than_10" "more_than_10" "les_than_10"  "more_than_10"
+## [109] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+## [113] "more_than_10" "les_than_10"  "les_than_10"  "more_than_10"
+## [117] "more_than_10" "more_than_10" "more_than_10" "les_than_10" 
+## [121] "more_than_10" "les_than_10"  "more_than_10" "more_than_10"
+## [125] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+## [129] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+## [133] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+## [137] "more_than_10" "more_than_10" "les_than_10"  "more_than_10"
+## [141] "more_than_10" "more_than_10" "les_than_10"  "more_than_10"
+## [145] "more_than_10" "more_than_10" "more_than_10" "more_than_10"
+## [149] "more_than_10" "les_than_10"
+```
+
+---
+
+# Functions
+
+## Types
+
+- Base-R functions (`mean()`, `plot()`, `lm()`)
+- Package functions (`dplyr::mutate()`, `stringr::str_detect()`)
+- User-defined functions 
+
+
+```r
+workshop_hate_message &lt;- function(name = "No one", n = 3) {
+  text_to_print &lt;- paste(name, "hate(s)", "this workshop")
+  for(i in 1:n) {
+    print(text_to_print)
+  }
+  
+}
+
+workshop_hate_message("All of us",4)
+```
+
+```
+## [1] "All of us hate(s) this workshop"
+## [1] "All of us hate(s) this workshop"
+## [1] "All of us hate(s) this workshop"
+## [1] "All of us hate(s) this workshop"
+```
+
+
+---
+
+# Packages
+
+## Package Installation &amp; Loading
+
+### From CRAN (usually Stable Version)
+
+
+```r
+install.packages("itunesr")
+```
+
+**From Github (usually Development Version)**
+
+
+```r
+#install.packages("devtools")
+devtools::install_github("amrrs/itunesr")
+```
+
+### Loading
+
+
+```r
+library(itunesr)
+```
+
+---
+
+# Help
+
+## using `help()`
+
+
+```r
+help("runif")
+```
+
+## using ?
+
+
+```r
+?sample
+```
+
+---
+
+# Help - Example
+
+
+```r
+example("for")
+```
+
+```
+## 
+## for&gt; for(i in 1:5) print(1:i)
+## [1] 1
+## [1] 1 2
+## [1] 1 2 3
+## [1] 1 2 3 4
+## [1] 1 2 3 4 5
+## 
+## for&gt; for(n in c(2,5,10,20,50)) {
+## for+    x &lt;- stats::rnorm(n)
+## for+    cat(n, ": ", sum(x^2), "\n", sep = "")
+## for+ }
+## 2: 2.188171
+## 5: 1.936692
+## 10: 15.34038
+## 20: 25.59841
+## 50: 49.75875
+## 
+## for&gt; f &lt;- factor(sample(letters[1:5], 10, replace = TRUE))
+## 
+## for&gt; for(i in unique(f)) print(i)
+## [1] "c"
+## [1] "a"
+## [1] "d"
+## [1] "b"
+## [1] "e"
+```
+
+---
+
+# Packages Vignette
+
+
+```r
+vignette("dplyr")
+
+browseVignettes("dplyr")
+```
+
+
+ 
+---
+class: inverse, center, middle
+
+# Data wrangling and Visualization using Tidyverse
+
+---
+class: center, middle
+
+# Data Science Framework
+
+
+There are now like, you know, a billion venn diagrams showing you what data science is. But to me I think the definition is pretty simple. Whenever you're struggling with data, trying to understand what's going on with data, whenever you're trying to turn that **raw data into insight and understanding and discoveries**. I think that's **Data Science.**" - Hadley Wickham
+
+&lt;figure&gt;
+    &lt;img src='images/hadley_data_science.png' width="80% /&gt;
+      &lt;font size="2"&gt;
+        &lt;figcaption&gt; Source: &lt;a href ="https://www.youtube.com/watch?v=cpbtcsGE0OA"&gt;Hadley Wickham&lt;/a&gt;
+        &lt;/figcaption&gt;
+      &lt;/font&gt;
+&lt;/figure&gt;
+
+---
+
+# Tidyverse
+
+
+- An opinionated collection of R packages designed for data science. 
+- All packages share an underlying design *philosophy, grammar, and data structures*. 
+
+
+```r
+install.packages("tidyverse")
+```
+
+### tidyverse packages
+
+
+```r
+tidyverse::tidyverse_packages()
+```
+
+```
+##  [1] "broom"       "cli"         "crayon"      "dplyr"       "dbplyr"     
+##  [6] "forcats"     "ggplot2"     "haven"       "hms"         "httr"       
+## [11] "jsonlite"    "lubridate"   "magrittr"    "modelr"      "purrr"      
+## [16] "readr"       "readxl\n(&gt;=" "reprex"      "rlang"       "rstudioapi" 
+## [21] "rvest"       "stringr"     "tibble"      "tidyr"       "xml2"       
+## [26] "tidyverse"
+```
+
+---
+
+# Loading the Library
+
+
+```r
+library(tidyverse)
+```
+
+```
+## ── Attaching packages ──────────────────────────────────────────────── tidyverse 1.2.1 ──
+```
+
+```
+## ✔ ggplot2 3.1.0     ✔ purrr   0.2.5
+## ✔ tibble  2.0.0     ✔ dplyr   0.7.8
+## ✔ tidyr   0.8.2     ✔ stringr 1.3.1
+## ✔ readr   1.3.1     ✔ forcats 0.3.0
+```
+
+```
+## Warning: package 'tibble' was built under R version 3.5.2
+```
+
+```
+## ── Conflicts ─────────────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+```
+
+
+---
+
+# Input Data
+
+Reading the dataset
+
+
+```r
+#kaggle &lt;- read_csv("data/kaggle_survey_2018.csv")
+
+kaggle &lt;- read_csv("data/kaggle_survey_2018.csv", skip = 1)
+```
+
+---
+
+# Basic Stats
+
+### Dimension (Rows Column)
+
+
+```r
+dim(kaggle)
+```
+
+```
+## [1] 23859   395
+```
+
+
+```r
+glimpse(kaggle)
+```
+
+```
+## Observations: 23,859
+## Variables: 395
+## $ `Duration (in seconds)`                                                                                                                                                                                                                     &lt;dbl&gt; …
+## $ `What is your gender? - Selected Choice`                                                                                                                                                                                                    &lt;chr&gt; …
+## $ `What is your gender? - Prefer to self-describe - Text`                                                                                                                                                                                     &lt;dbl&gt; …
+## $ `What is your age (# years)?`                                                                                                                                                                                                               &lt;chr&gt; …
+## $ `In which country do you currently reside?`                                                                                                                                                                                                 &lt;chr&gt; …
+## $ `What is the highest level of formal education that you have attained or plan to attain within the next 2 years?`                                                                                                                           &lt;chr&gt; …
+## $ `Which best describes your undergraduate major? - Selected Choice`                                                                                                                                                                          &lt;chr&gt; …
+## $ `Select the title most similar to your current role (or most recent title if retired): - Selected Choice`                                                                                                                                   &lt;chr&gt; …
+## $ `Select the title most similar to your current role (or most recent title if retired): - Other - Text`                                                                                                                                      &lt;dbl&gt; …
+## $ `In what industry is your current employer/contract (or your most recent employer if retired)? - Selected Choice`                                                                                                                           &lt;chr&gt; …
+## $ `In what industry is your current employer/contract (or your most recent employer if retired)? - Other - Text`                                                                                                                              &lt;dbl&gt; …
+## $ `How many years of experience do you have in your current role?`                                                                                                                                                                            &lt;chr&gt; …
+## $ `What is your current yearly compensation (approximate $USD)?`                                                                                                                                                                              &lt;chr&gt; …
+## $ `Does your current employer incorporate machine learning methods into their business?`                                                                                                                                                      &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Analyze and understand data to influence product or business decisions`                                             &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Build and/or run a machine learning service that operationally improves my product or workflows`                    &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Build and/or run the data infrastructure that my business uses for storing, analyzing, and operationalizing data`   &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Build prototypes to explore applying machine learning to new areas`                                                 &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Do research that advances the state of the art of machine learning`                                                 &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - None of these activities are an important part of my role at work`                                                  &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Selected Choice - Other`                                                                                                              &lt;chr&gt; …
+## $ `Select any activities that make up an important part of your role at work: (Select all that apply) - Other - Text`                                                                                                                         &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Selected Choice`                                                                                                                        &lt;chr&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Basic statistical software (Microsoft Excel, Google Sheets, etc.) - Text`                                                               &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Advanced statistical software (SPSS, SAS, etc.) - Text`                                                                                 &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Business intelligence software (Salesforce, Tableau, Spotfire, etc.) - Text`                                                            &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Local or hosted development environments (RStudio, JupyterLab, etc.) - Text`                                                            &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Cloud-based data software &amp; APIs (AWS, GCP, Azure, etc.) - Text`                                                                        &lt;dbl&gt; …
+## $ `What is the primary tool that you use at work or school to analyze data? (include text response) - Other - Text`                                                                                                                           &lt;dbl&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Jupyter/IPython`                                                       &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - RStudio`                                                               &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - PyCharm`                                                               &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Visual Studio Code`                                                    &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - nteract`                                                               &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Atom`                                                                  &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - MATLAB`                                                                &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Visual Studio`                                                         &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Notepad++`                                                             &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Sublime Text`                                                          &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Vim`                                                                   &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IntelliJ`                                                              &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Spyder`                                                                &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - None`                                                                  &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                 &lt;chr&gt; …
+## $ `Which of the following integrated development environments (IDE's) have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                            &lt;dbl&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Kaggle Kernels`                                                                                   &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Colab`                                                                                     &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Notebook`                                                                                   &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Domino Datalab`                                                                                   &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Datalab`                                                                             &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Paperspace`                                                                                       &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Floydhub`                                                                                         &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Crestle`                                                                                          &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - JupyterHub/Binder`                                                                                &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - None`                                                                                             &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                                            &lt;chr&gt; …
+## $ `Which of the following hosted notebooks have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                                                       &lt;dbl&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Platform (GCP)`                                                              &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Web Services (AWS)`                                                                &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Microsoft Azure`                                                                          &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud`                                                                                &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Alibaba Cloud`                                                                            &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - I have not used any cloud providers`                                                      &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                                    &lt;chr&gt; …
+## $ `Which of the following cloud computing services have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                                               &lt;dbl&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Python`                                                                                                                              &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - R`                                                                                                                                   &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - SQL`                                                                                                                                 &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Bash`                                                                                                                                &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Java`                                                                                                                                &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Javascript/Typescript`                                                                                                               &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Visual Basic/VBA`                                                                                                                    &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - C/C++`                                                                                                                               &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - MATLAB`                                                                                                                              &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Scala`                                                                                                                               &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Julia`                                                                                                                               &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Go`                                                                                                                                  &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - C#/.NET`                                                                                                                             &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - PHP`                                                                                                                                 &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Ruby`                                                                                                                                &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - SAS/STATA`                                                                                                                           &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - None`                                                                                                                                &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Selected Choice - Other`                                                                                                                               &lt;chr&gt; …
+## $ `What programming languages do you use on a regular basis? (Select all that apply) - Other - Text`                                                                                                                                          &lt;dbl&gt; …
+## $ `What specific programming language do you use most often? - Selected Choice`                                                                                                                                                               &lt;chr&gt; …
+## $ `What specific programming language do you use most often? - Other - Text`                                                                                                                                                                  &lt;dbl&gt; …
+## $ `What programming language would you recommend an aspiring data scientist to learn first? - Selected Choice`                                                                                                                                &lt;chr&gt; …
+## $ `What programming language would you recommend an aspiring data scientist to learn first? - Other - Text`                                                                                                                                   &lt;dbl&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Scikit-Learn`                                                                                                              &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - TensorFlow`                                                                                                                &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Keras`                                                                                                                     &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - PyTorch`                                                                                                                   &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Spark MLlib`                                                                                                               &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - H20`                                                                                                                       &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Fastai`                                                                                                                    &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Mxnet`                                                                                                                     &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Caret`                                                                                                                     &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Xgboost`                                                                                                                   &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - mlr`                                                                                                                       &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Prophet`                                                                                                                   &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - randomForest`                                                                                                              &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - lightgbm`                                                                                                                  &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - catboost`                                                                                                                  &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - CNTK`                                                                                                                      &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Caffe`                                                                                                                     &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - None`                                                                                                                      &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Selected Choice - Other`                                                                                                                     &lt;chr&gt; …
+## $ `What machine learning frameworks have you used in the past 5 years? (Select all that apply) - Other - Text`                                                                                                                                &lt;dbl&gt; …
+## $ `Of the choices that you selected in the previous question, which ML library have you used the most? - Selected Choice`                                                                                                                     &lt;chr&gt; …
+## $ `Of the choices that you selected in the previous question, which ML library have you used the most? - Other - Text`                                                                                                                        &lt;dbl&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - ggplot2`                                                                                                         &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Matplotlib`                                                                                                      &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Altair`                                                                                                          &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Shiny`                                                                                                           &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - D3`                                                                                                              &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Plotly`                                                                                                          &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Bokeh`                                                                                                           &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Seaborn`                                                                                                         &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Geoplotlib`                                                                                                      &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Leaflet`                                                                                                         &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Lattice`                                                                                                         &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - None`                                                                                                            &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Selected Choice - Other`                                                                                                           &lt;chr&gt; …
+## $ `What data visualization libraries or tools have you used in the past 5 years? (Select all that apply) - Other - Text`                                                                                                                      &lt;dbl&gt; …
+## $ `Of the choices that you selected in the previous question, which specific data visualization library or tool have you used the most? - Selected Choice`                                                                                    &lt;chr&gt; …
+## $ `Of the choices that you selected in the previous question, which specific data visualization library or tool have you used the most? - Other - Text`                                                                                       &lt;dbl&gt; …
+## $ `Approximately what percent of your time at work or school is spent actively coding?`                                                                                                                                                       &lt;chr&gt; …
+## $ `How long have you been writing code to analyze data?`                                                                                                                                                                                      &lt;chr&gt; …
+## $ `For how many years have you used machine learning methods (at work or in school)?`                                                                                                                                                         &lt;chr&gt; …
+## $ `Do you consider yourself to be a data scientist?`                                                                                                                                                                                          &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - AWS Elastic Compute Cloud (EC2)`                                                          &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Google Compute Engine`                                                                    &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - AWS Elastic Beanstalk`                                                                    &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Google App Engine`                                                                        &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Google Kubernetes Engine`                                                                 &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - AWS Lambda`                                                                               &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Google Cloud Functions`                                                                   &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - AWS Batch`                                                                                &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Virtual Machines`                                                                   &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Container Service`                                                                  &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Functions`                                                                          &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Event Grid`                                                                         &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Batch`                                                                              &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Azure Kubernetes Service`                                                                 &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - IBM Cloud Virtual Servers`                                                                &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - IBM Cloud Container Registry`                                                             &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - IBM Cloud Kubernetes Service`                                                             &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - IBM Cloud Foundry`                                                                        &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - None`                                                                                     &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Selected Choice - Other`                                                                                    &lt;chr&gt; …
+## $ `Which of the following cloud computing products have you used at work or school in the last 5 years (Select all that apply)? - Other - Text`                                                                                               &lt;dbl&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Transcribe`                                                                       &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Speech-to-text API`                                                         &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Rekognition`                                                                      &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Vision API`                                                                 &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Comprehend`                                                                       &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Natural Language API`                                                       &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Translate`                                                                        &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Translation API`                                                            &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Lex`                                                                              &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Dialogflow Enterprise Edition`                                                    &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon Rekognition Video`                                                                &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Video Intelligence API`                                                     &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud AutoML`                                                                     &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Amazon SageMaker`                                                                        &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Machine Learning Engine`                                                    &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - DataRobot`                                                                               &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - H20 Driverless AI`                                                                       &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Domino Datalab`                                                                          &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - SAS`                                                                                     &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Dataiku`                                                                                 &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - RapidMiner`                                                                              &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Instabase`                                                                               &lt;lgl&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Algorithmia`                                                                             &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Dataversity`                                                                             &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Cloudera`                                                                                &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Machine Learning Studio`                                                           &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Machine Learning Workbench`                                                        &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Cortana Intelligence Suite`                                                        &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Bing Speech API`                                                                   &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Speaker Recognition API`                                                           &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Computer Vision API`                                                               &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Face API`                                                                          &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Video API`                                                                         &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Studio`                                                                       &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Knowledge Catalog`                                                            &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Assistant`                                                                    &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Discovery`                                                                    &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Text to Speech`                                                               &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Visual Recognition`                                                           &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Watson Machine Learning`                                                             &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Cognitive Services`                                                                &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - None`                                                                                    &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                                   &lt;chr&gt; …
+## $ `Which of the following machine learning products have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                                              &lt;dbl&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Relational Database Service`                                                      &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Aurora`                                                                           &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud SQL`                                                                     &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Spanner`                                                                 &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS DynamoDB`                                                                         &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Datastore`                                                               &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Bigtable`                                                                &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS SimpleDB`                                                                         &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Microsoft SQL Server`                                                                 &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - MySQL`                                                                                &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - PostgresSQL`                                                                          &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - SQLite`                                                                               &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Oracle Database`                                                                      &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Ingres`                                                                               &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Microsoft Access`                                                                     &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - NexusDB`                                                                              &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - SAP IQ`                                                                               &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Fusion Tables`                                                                 &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Database for MySQL`                                                             &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Cosmos DB`                                                                      &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure SQL Database`                                                                   &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Database for PostgreSQL`                                                        &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Compose`                                                                    &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Compose for MySQL`                                                          &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Compose for PostgreSQL`                                                     &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Db2`                                                                        &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - None`                                                                                 &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                                &lt;chr&gt; …
+## $ `Which of the following relational database products have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                                           &lt;dbl&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Elastic MapReduce`                                                             &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Batch`                                                                         &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Dataproc`                                                             &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Dataflow`                                                             &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Dataprep`                                                             &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Kinesis`                                                                       &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google Cloud Pub/Sub`                                                              &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Athena`                                                                        &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - AWS Redshift`                                                                      &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Google BigQuery`                                                                   &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Teradata`                                                                          &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Microsoft Analysis Services`                                                       &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Oracle Exadata`                                                                    &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Oracle Warehouse Builder`                                                          &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - SAP IQ`                                                                            &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Snowflake`                                                                         &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Databricks`                                                                        &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure SQL Data Warehouse`                                                          &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure HDInsight`                                                                   &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Azure Stream Analytics`                                                            &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM InfoSphere DataStorage`                                                        &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Analytics Engine`                                                        &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - IBM Cloud Streaming Analytics`                                                     &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - None`                                                                              &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Selected Choice - Other`                                                                             &lt;chr&gt; …
+## $ `Which of the following big data and analytics products have you used at work or school in the last 5 years? (Select all that apply) - Other - Text`                                                                                        &lt;dbl&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Audio Data`                                                                                                   &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Categorical Data`                                                                                             &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Genetic Data`                                                                                                 &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Geospatial Data`                                                                                              &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Image Data`                                                                                                   &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Numerical Data`                                                                                               &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Sensor Data`                                                                                                  &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Tabular Data`                                                                                                 &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Text Data`                                                                                                    &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Time Series Data`                                                                                             &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Video Data`                                                                                                   &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Selected Choice - Other Data`                                                                                                   &lt;chr&gt; …
+## $ `Which types of data do you currently interact with most often at work or school? (Select all that apply) - Other Data - Text`                                                                                                              &lt;dbl&gt; …
+## $ `What is the type of data that you currently interact with most often at work or school? - Selected Choice`                                                                                                                                 &lt;chr&gt; …
+## $ `What is the type of data that you currently interact with most often at work or school? - Other Data - Text`                                                                                                                               &lt;dbl&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Government websites`                                                                                                                                        &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - University research group websites`                                                                                                                         &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Non-profit research group websites`                                                                                                                         &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Dataset aggregator/platform (Socrata, Kaggle Public Datasets Platform, etc.)`                                                                               &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - I collect my own data (web-scraping, etc.)`                                                                                                                 &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Publicly released data from private companies`                                                                                                              &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Google Search`                                                                                                                                              &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Google Dataset Search`                                                                                                                                      &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - GitHub`                                                                                                                                                     &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - None/I do not work with public data`                                                                                                                        &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Selected Choice - Other`                                                                                                                                                      &lt;chr&gt; …
+## $ `Where do you find public datasets? (Select all that apply) - Other - Text`                                                                                                                                                                 &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Gathering data`                                                           &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Cleaning data`                                                            &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Visualizing data`                                                         &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Model building/model selection`                                           &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Putting the model into production`                                        &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Finding insights in the data and communicating with stakeholders`         &lt;dbl&gt; …
+## $ `During a typical data science project at work or school, approximately what proportion of your time is devoted to the following? (Answers must add up to 100%) - Other`                                                                    &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Self-taught`                                                                                             &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Online courses (Coursera, Udemy, edX, etc.)`                                                             &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Work`                                                                                                    &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - University`                                                                                              &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Kaggle competitions`                                                                                     &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Other`                                                                                                   &lt;dbl&gt; …
+## $ `What percentage of your current machine learning/data science training falls under each category? (Answers must add up to 100%) - Other - Text`                                                                                            &lt;dbl&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Udacity`                                                                                                           &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Coursera`                                                                                                          &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - edX`                                                                                                               &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - DataCamp`                                                                                                          &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - DataQuest`                                                                                                         &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Kaggle Learn`                                                                                                      &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Fast.AI`                                                                                                           &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - developers.google.com`                                                                                             &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Udemy`                                                                                                             &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - TheSchool.AI`                                                                                                      &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Online University Courses`                                                                                         &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - None`                                                                                                              &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Selected Choice - Other`                                                                                                             &lt;chr&gt; …
+## $ `On which online platforms have you begun or completed data science courses? (Select all that apply) - Other - Text`                                                                                                                        &lt;dbl&gt; …
+## $ `On which online platform have you spent the most amount of time? - Selected Choice`                                                                                                                                                        &lt;chr&gt; …
+## $ `On which online platform have you spent the most amount of time? - Other - Text`                                                                                                                                                           &lt;dbl&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Twitter`                                                                                                          &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Hacker News`                                                                                                      &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - r/machinelearning`                                                                                                &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Kaggle forums`                                                                                                    &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Fastai forums`                                                                                                    &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Siraj Raval YouTube Channel`                                                                                      &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - DataTau News Aggregator`                                                                                          &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Linear Digressions Podcast`                                                                                       &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Cloud AI Adventures (YouTube)`                                                                                    &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - FiveThirtyEight.com`                                                                                              &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - ArXiv &amp; Preprints`                                                                                                &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Journal Publications`                                                                                             &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - FastML Blog`                                                                                                      &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - KDnuggets Blog`                                                                                                   &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - O'Reilly Data Newsletter`                                                                                         &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Partially Derivative Podcast`                                                                                     &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - The Data Skeptic Podcast`                                                                                         &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Medium Blog Posts`                                                                                                &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Towards Data Science Blog`                                                                                        &lt;lgl&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Analytics Vidhya Blog`                                                                                            &lt;lgl&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - None/I do not know`                                                                                               &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Selected Choice - Other`                                                                                                            &lt;chr&gt; …
+## $ `Who/what are your favorite media sources that report on data science topics? (Select all that apply) - Other - Text`                                                                                                                       &lt;dbl&gt; …
+## $ `How do you perceive the quality of online learning platforms and in-person bootcamps as compared to the quality of the education provided by traditional brick and mortar institutions? - Online learning platforms and MOOCs:`            &lt;chr&gt; …
+## $ `How do you perceive the quality of online learning platforms and in-person bootcamps as compared to the quality of the education provided by traditional brick and mortar institutions? - In-person bootcamps:`                            &lt;chr&gt; …
+## $ `Which better demonstrates expertise in data science: academic achievements or independent projects? - Your views:`                                                                                                                         &lt;chr&gt; …
+## $ `How do you perceive the importance of the following topics? - Fairness and bias in ML algorithms:`                                                                                                                                         &lt;chr&gt; …
+## $ `How do you perceive the importance of the following topics? - Being able to explain ML model outputs and/or predictions`                                                                                                                   &lt;chr&gt; …
+## $ `How do you perceive the importance of the following topics? - Reproducibility in data science`                                                                                                                                             &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Selected Choice - Revenue and/or business goals`                                                           &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Selected Choice - Metrics that consider accuracy`                                                          &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Selected Choice - Metrics that consider unfair bias`                                                       &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Selected Choice - Not applicable (I am not involved with an organization that builds ML models)`           &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Selected Choice - Other`                                                                                   &lt;chr&gt; …
+## $ `What metrics do you or your organization use to determine whether or not your models were successful? (Select all that apply) - Other - Text`                                                                                              &lt;dbl&gt; …
+## $ `Approximately what percent of your data projects involved exploring unfair bias in the dataset and/or algorithm?`                                                                                                                          &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - Lack of communication between individuals who collect the data and individuals who analyze the data`                  &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - Difficulty in identifying groups that are unfairly targeted`                                                          &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - Difficulty in collecting enough data about groups that may be unfairly targeted`                                      &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - Difficulty in identifying and selecting the appropriate evaluation metrics`                                           &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - I have never found any difficulty in this task`                                                                       &lt;chr&gt; …
+## $ `What do you find most difficult about ensuring that your algorithms are fair and unbiased? (Select all that apply) - I have never performed this task`                                                                                     &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - Only for very important models that are already in production`                                                    &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - For all models right before putting the model in production`                                                      &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - When determining whether it is worth it to put the model into production`                                         &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - When building a model that was specifically designed to produce such insights`                                    &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - When first exploring a new ML model or dataset`                                                                   &lt;chr&gt; …
+## $ `In what circumstances would you explore model insights and interpret your model's predictions? (Select all that apply) - I do not explore and interpret model insights and predictions`                                                    &lt;chr&gt; …
+## $ `Approximately what percent of your data projects involve exploring model insights?`                                                                                                                                                        &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Examine individual model coefficients`                                                     &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Examine feature correlations`                                                              &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Examine feature importances`                                                               &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Plot decision boundaries`                                                                  &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Create partial dependence plots`                                                           &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Dimensionality reduction techniques`                                                       &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Attention mapping/saliency mapping`                                                        &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Plot predicted vs. actual results`                                                         &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Print out a decision tree`                                                                 &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Sensitivity analysis/perturbation importance`                                              &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - LIME functions`                                                                            &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - ELI5 functions`                                                                            &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - SHAP functions`                                                                            &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - None/I do not use these model explanation techniques`                                      &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Selected Choice - Other`                                                                                     &lt;chr&gt; …
+## $ `What methods do you prefer for explaining and/or interpreting decisions that are made by ML models? (Select all that apply) - Other - Text`                                                                                                &lt;chr&gt; …
+## $ `Do you consider ML models to be "black boxes" with outputs that are difficult or impossible to explain?`                                                                                                                                   &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Share code on Github or a similar code-sharing repository`                                                              &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Share both data and code on Github or a similar code-sharing repository`                                                &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Share data, code, and environment using a hosted service (Kaggle Kernels, Google Colaboratory, Amazon SageMaker, etc.)` &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Share data, code, and environment using containers (Docker, etc.)`                                                      &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Share code, data, and environment using virtual machines (VirtualBox, etc.)`                                            &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Make sure the code is well documented`                                                                                  &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Make sure the code is human-readable`                                                                                   &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Define all random seeds`                                                                                                &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Define relative rather than absolute file paths`                                                                        &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Include a text file describing all dependencies`                                                                        &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - None/I do not make my work easy for others to reproduce`                                                                &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Selected Choice - Other`                                                                                                                  &lt;chr&gt; …
+## $ `What tools and methods do you use to make your work easy to reproduce? (Select all that apply) - Other - Text`                                                                                                                             &lt;dbl&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Too expensive`                                                                                             &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Too time-consuming`                                                                                        &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Requires too much technical knowledge`                                                                     &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Afraid that others will use my work without giving proper credit`                                          &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Not enough incentives to share my work`                                                                    &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - I had never considered making my work easier for others to reproduce`                                      &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - None of these reasons apply to me`                                                                         &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Selected Choice - Other`                                                                                                     &lt;chr&gt; …
+## $ `What barriers prevent you from making your work even easier to reuse and reproduce? (Select all that apply) - Other - Text`                                                                                                                &lt;dbl&gt; …
+```
+
+---
+
+class: inverse, center
+
+# Dataset Overview 
+## Demo on RStudio
+
+---
+
+# Data Questions (Business Problem)
+
+- What's the percentage of Male and Female respondents?
+
+- What are the top 5 countries?
+
+---
+
+# dyplr verbs
+
+- `mutate()` - adds new variables that are functions of existing variables
+- `select()` - picks variables based on their names.
+- `filter()` - picks cases based on their values.
+- `summarise()` - reduces multiple values down to a single summary.
+- `arrange()` - changes the ordering of the rows.
+
+---
+
+# Introducing %&gt;% Pipe Operator
+
+- The pipe, `%&gt;%`, comes from the magrittr package by Stefan Milton Bache
+
+- **Output of LHS** is given as the **input (first argument) of RHS**
+
+### Example
+
+
+```r
+kaggle %&gt;% dim()
+```
+
+```
+## [1] 23859   395
+```
+
+Although doesn't make much sense to use `%&gt;%` in this context, Hope it explains the function.
+
+---
+
+# Percentage of Male and Female
+
+* Column name - `What is your gender? - Selected Choice`
+
+### Pseudo-code
+
+- `group_by` the `kaggle` dataframe on column `What is your gender? - Selected Choice`
+- `count` the values 
+-  calculate `percentage` value from the `count`s
+
+---
+
+# % of Male and Female - Group By &amp; Count - Method 1
+
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  summarise(n = n())
+```
+
+```
+## # A tibble: 4 x 2
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Female                                    4010
+## 2 Male                                     19430
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
+
+---
+
+# % of Male and Female - Group By &amp; Count - Method 2
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() 
+```
+
+```
+## # A tibble: 4 x 2
+## # Groups:   What is your gender? - Selected Choice [4]
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Female                                    4010
+## 2 Male                                     19430
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
+
+---
+
+# % of Male and Female - Group By &amp; Count - Sorted 
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  arrange(desc(n))
+```
+
+```
+## # A tibble: 4 x 2
+## # Groups:   What is your gender? - Selected Choice [4]
+##   `What is your gender? - Selected Choice`     n
+##   &lt;chr&gt;                                    &lt;int&gt;
+## 1 Male                                     19430
+## 2 Female                                    4010
+## 3 Prefer not to say                          340
+## 4 Prefer to self-describe                     79
+```
+
+
+---
+
+# % of Male and Female - Percentage
+
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2))
+```
+
+```
+## # A tibble: 4 x 3
+##   `What is your gender? - Selected Choice`     n  perc
+##   &lt;chr&gt;                                    &lt;int&gt; &lt;dbl&gt;
+## 1 Female                                    4010  0.17
+## 2 Male                                     19430  0.81
+## 3 Prefer not to say                          340  0.01
+## 4 Prefer to self-describe                     79  0
+```
+
+---
+
+# % of Male and Female - Nice_Looking_Table
+
+
+
+```r
+kaggle %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; What is your gender? - Selected Choice &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; perc &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.81 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Prefer not to say &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 340 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.01 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Prefer to self-describe &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 79 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.00 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+class: inverse,center,middle
+
+# But, Wait!!!
+## Go Back and See 
+### If you have only `Male` and `Female`?
+
+
+---
+
+class: inverse,center,middle
+
+# Time for some cleaning
+## In the form of `filter()`ing
+
+---
+
+# % of Male and Female - Filtered_Nice
+
+
+
+```r
+kaggle %&gt;% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; What is your gender? - Selected Choice &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; perc &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.17 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0.83 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+ 
+
+---
+
+class: inverse,center,middle
+
+# An Awkward column name, isn't it??!
+
+---
+
+# % of Male and Female - All_Nice_Table
+
+
+```r
+library(scales) #for Percentage Formatting
+```
+
+```
+## 
+## Attaching package: 'scales'
+```
+
+```
+## The following object is masked from 'package:purrr':
+## 
+##     discard
+```
+
+```
+## The following object is masked from 'package:readr':
+## 
+##     col_factor
+```
+
+```r
+kaggle %&gt;% 
+  filter(`What is your gender? - Selected Choice` %in% c("Male","Female")) %&gt;% 
+  group_by(`What is your gender? - Selected Choice`) %&gt;% 
+  count() %&gt;% 
+  ungroup() %&gt;% 
+  mutate(perc = round(n / sum(n),2)) %&gt;% 
+  mutate(perc = scales::percent(perc)) %&gt;% 
+  rename(Gender = `What is your gender? - Selected Choice`,
+         Count = n,
+         Percentage = perc) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Gender &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Count &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Percentage &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Female &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4010 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 17.0% &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Male &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 19430 &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; 83.0% &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Top 5 Countries
+
+* Column name - `In which country do you currently reside?`
+
+
+### Pseudo-code
+
+- `count` number of respondents from each country
+- `arrange` countries in descending order based on their count value
+- `top 5` in the list is the output
+
+---
+
+# Top 5 Countries - Code
+
+
+```r
+kaggle %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+```
+## Selecting by n
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; In which country do you currently reside? &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United States of America &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4716 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4417 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; China &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1644 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Other &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1036 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Russia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 879 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: inverse,center,middle
+
+# Is `Other` a country name???
+
+---
+
+# Top 5 Countries 
+
+
+```r
+kaggle %&gt;% 
+  filter(!`In which country do you currently reside?` %in% "Other") %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  rename(Country = `In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  knitr::kable(format = "html")
+```
+
+```
+## Selecting by n
+```
+
+&lt;table&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Country &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; n &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; United States of America &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4716 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; India &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 4417 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; China &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1644 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Russia &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 879 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Brazil &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 736 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+class: inverse,center,middle
+
+# Table is nice, but a visually appealing plot is Nicer
+## 😉
+
+
+---
+
+# Top 5 Countries - Plot #1
+
+
+```r
+kaggle %&gt;% 
+  filter(!`In which country do you currently reside?` %in% "Other") %&gt;% 
+  count(`In which country do you currently reside?`) %&gt;% 
+  rename(Country = `In which country do you currently reside?`) %&gt;% 
+  arrange(desc(n)) %&gt;% 
+  top_n(5) %&gt;% 
+  ggplot() + geom_bar(aes(Country,n), stat = "identity") +
+  coord_flip() +
+  theme_minimal() +
+  labs(title = "Top 5 Countries",
+       subtitle = "From where Kaggle Survey Respondentns reside",
+       x = "Country",
+       y = "Number of Respondents",
+       caption = "Data Source: Kaggle Survey 2018")
+```
+
+---
+
+# Top 5 Countries - Plot #2
+
+![](presentation_files/figure-html/countries2-1.png)&lt;!-- --&gt;
+
+---
+
+# Top 5 Countries - Plot #3 Themed
+
+![](presentation_files/figure-html/countries3-1.png)&lt;!-- --&gt;
+
+
+---
+
+class: inverse, center, middle
+
+# Documentation and Reporting using R Markdown
+## Demo
+
+---
+
+class: inverse, center, middle
+
+# Project Demo 
+
+---
+
+
+class: center, middle
+
+# Object Detection in 3 Lines of R Code
+## using Tiny YOLO 
+### -Project Demo-
+
+---
+
+
+# References
+
+
+- [R for Data Science](https://r4ds.had.co.nz/)
+
+- [R-Bloggers](https://www.r-bloggers.com/) 
+
+---
+
+class: center, middle
+
+# Thanks!
+
+Slides created via the R package [**xaringan**](https://github.com/yihui/xaringan).
+
+The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
+    </textarea>
+<script src="libs/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function() {
+  var d = document, s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})();</script>
+
+<script>
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+</script>
+
+<script>
+(function() {
+  var i, text, code, codes = document.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+})();
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
