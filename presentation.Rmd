@@ -1,7 +1,7 @@
 ---
 title: "Intro to R for Data Science"
 subtitle: "Beginner's workshop"
-author: "AbdulMajedRaja RS"
+author: "AbdulMajedRaja RS & Aiswarya Ramachandran"
 output:
   xaringan::moon_reader:
     chakra: libs/remark-latest.min.js 
@@ -17,16 +17,27 @@ options(htmltools.dir.version = FALSE)
 ```
 
 
-# About Me
+# About Me - Aiswarya Ramachandran
 
-- Studied at **Government College of Technology, Coimbatore**
+
+
+
+---
+
+# About Me - AbdulMajedRaja 
+
+- CS Engineer from **Government College of Technology, Coimbatore**
 
 - Bengaluru R user group **Organizer**
 
 - R Packages Developer ( `coinmarketcapr`, `itunesr`)
 
+- [www.programmingwithr.com](www.programmingwithr.com)
+
+
 
 ---
+
 
 class: inverse
 

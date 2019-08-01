@@ -23,7 +23,7 @@ Project Demo:
 * [Object Detection in R using Tiny YOLO](https://heartbeat.fritz.ai/object-detection-in-just-3-lines-of-r-code-using-tiny-yolo-b5a16e50e8a0) 
 
 
-### [Presentation Link - HTML](https://amrrs.github.io/r_beginners_workshop/presentation.html)
+### [Presentation Link - HTML](https://amrrs.github.io/devconf19_workshop/presentation.html)
 
 ### [Presentation PDF](https://github.com/amrrs/r_beginners_workshop/blob/master/presentation.pdf)
 
